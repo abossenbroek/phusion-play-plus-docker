@@ -4,6 +4,8 @@
 # a list of version numbers.
 FROM phusion/baseimage:0.11
 
+ARG APPLICATION_SECRET
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
