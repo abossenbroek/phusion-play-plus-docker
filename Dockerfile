@@ -19,9 +19,6 @@ RUN echo "deb https://dl.bintray.com/sbt/debian /" >> /etc/apt/sources.list.d/sb
 
 WORKDIR /code
 
-RUN sbt compile
-
-# Clean up APT when done.
-RUN rm -rf /tmp/* /var/tmp/*
+RUN sbt compile && rm -rf /tmp/* /var/tmp/*
 
 CMD ["sbt"]
