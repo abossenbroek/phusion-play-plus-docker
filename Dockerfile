@@ -17,7 +17,7 @@ RUN echo "deb https://dl.bintray.com/sbt/debian /" >> /etc/apt/sources.list.d/sb
       sbt=1.2.7 \
       openjdk-8-jdk-headless=8u191-b12-0ubuntu0.18.04.1 \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Taken from cats options: https://github.com/typelevel/cats/blob/master/.jvmopts
 RUN echo "-J-Xms1G" >> /etc/sbt/sbtopts \
@@ -30,6 +30,6 @@ RUN echo "-J-Xms1G" >> /etc/sbt/sbtopts \
 
 WORKDIR /code
 
-RUN sbt compile && rm -rf /tmp/* /var/tmp/*
+RUN sbt compile
 
 CMD ["sbt"]
